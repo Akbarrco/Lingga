@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Lingga 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #0A1931, #185ADB, #1F4287);
+    font-family:'Poppins', sans-serif;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Background glow */
+body::before{
+    content:'';
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:rgba(255,255,255,0.08);
+    border-radius:50%;
+    filter:blur(120px);
+    top:10%;
+    left:20%;
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50%;
+    filter:blur(100px);
+    bottom:10%;
+    right:15%;
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:90%;
+    max-width:480px;
+    padding:40px 30px;
+    border-radius:25px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 35px rgba(0,0,0,0.25);
+    color:white;
+    animation:fadeIn 1.5s ease;
+}
+
+.profile{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid rgba(255,255,255,0.8);
+    margin-bottom:20px;
+    box-shadow:0 0 25px rgba(255,255,255,0.25);
+}
+
+h1{
+    font-family:'Great Vibes', cursive;
+    font-size:3.3rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    font-size:1rem;
+    line-height:1.6;
+    opacity:0.9;
+    margin-bottom:25px;
+}
+
+button{
+    padding:14px 28px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    color:#185ADB;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.07);
+}
+
+.message{
+    display:none;
+    margin-top:25px;
+    font-size:1.1rem;
+    line-height:1.7;
+    animation:popup 1s ease;
+}
+
+.credit{
+    margin-top:30px;
+    font-size:0.9rem;
+    opacity:0.75;
+    font-style:italic;
+}
+
+/* Balloons */
+.balloon{
+    position:absolute;
+    bottom:-100px;
+    z-index:1;
+    font-size:30px;
+    animation:float 7s linear infinite;
+}
+
+/* Confetti (di depan card) */
+.confetti{
+    position:absolute;
+    top:-20px;
+    z-index:999;
+    font-size:18px;
+    pointer-events:none;
+    animation:fall linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0.8;
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <img src="Lingga.jpg" alt="Lingga" class="profile">
+
+    <h1>Happy Birthday🖕</h1>
+
+    <p class="subtitle">
+        Selamat ulang tahun Ling kolang kaling<br>
+        Semoga panjang umur, sehat selalu,  
+        dan semua impianmu bisa tercapai 😹
+    </p>
+
+    <button onclick="showMessage()">Open Surprise 🎁</button>
+
+    <div class="message" id="msg">
+        🎉 Selamat ulang tahun cak<br><br>
+        Semoga panjang umur, panjang anunya, lancar rezekinya,
+        tercapai cita citanya memiliki istri 3
+    </div>
+
+    <div class="credit">by: Akbar</div>
+</div>
+
+<script>
+function showMessage(){
+    document.getElementById("msg").style.display = "block";
+}
+
+// Balloon animation
+for(let i=0; i<10; i++){
+    let balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.innerHTML = "🎈";
+    balloon.style.left = Math.random()*100 + "vw";
+    balloon.style.animationDuration = (Math.random()*3+5) + "s";
+    balloon.style.fontSize = (Math.random()*15+25) + "px";
+    document.body.appendChild(balloon);
+}
+
+// Confetti front layer
+for(let i=0; i<40; i++){
+    let confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.innerHTML = ["🎉","✨","🎊","💙"][Math.floor(Math.random()*4)];
+    confetti.style.left = Math.random()*100 + "vw";
+    confetti.style.animationDuration = (Math.random()*3+2) + "s";
+    confetti.style.animationDelay = Math.random()*2 + "s";
+    document.body.appendChild(confetti);
+}
+</script>
+
+</body>
+</html>
